@@ -1,15 +1,15 @@
 from fastapi import FastAPI
-import os
 
-app = FastAPI()
-
-
-@app.get("/")
-async def root():
-
-    return {"message": "Hello World"}
+from app.routers import processes, anomaly
+from app.core.config import settings
+from app.utils import lifespan
 
 
-@app.get("/hello/{name}")
-async def say_hello(name: str):
-    return {"message": f"Hello {name}"}
+app = FastAPI(
+    title=settings.PROJECT_NAME,
+    description=settings.PROJECT_DESCRIPTION,
+    lifespan=lifespan
+)
+
+app.include_router(processes.router)
+app.include_router(anomaly.router)
