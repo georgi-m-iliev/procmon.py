@@ -20,6 +20,12 @@ class ProcessList(BaseModel):
         return len(self.processes)
 
 
+class FilterParams(BaseModel):
+    order_by: Optional[Literal["pid", "name", "cpu_usage", "memory_usage"]] = None
+    order: Optional[Literal["asc", "desc"]] = None
+    limit: Optional[int] = None
+
+
 class SharedState:
     def __init__(self):
         self.processes = []

@@ -1,6 +1,9 @@
 import asyncio
+import numpy as np
+
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
+
 from app.models import SharedState
 from app.core.config import settings
 from app.core.background_task import background_worker
@@ -18,3 +21,17 @@ async def lifespan(app: FastAPI):
     except asyncio.CancelledError:
         print("Background task cancelled.")
 
+
+def rolling_stats(values):
+    if len(values) < settings.ROLLING_WINDOW_LIMIT:
+        return None, None  # Not enough data
+    mean = np.mean(values)
+    std = np.std(values)
+    return mean, std
+
+
+def is_anomaly(value, mean, std, threshold):
+    if std == 0:
+        return False
+    z = abs((value - mean) / std)
+    return z > threshold
