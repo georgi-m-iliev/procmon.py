@@ -1,0 +1,36 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+env/
+venv/
+ENV/
+.venv/
+
+# IDE files
+.idea/
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Python dependency files
+*.egg-info/
+pip-log.txt
+
+# FastAPI specific
+*.db
+*.sqlite3
+
+# Test coverage
+htmlcov/
+.tox/
+.coverage
+.cache
+.pytest_cache/
