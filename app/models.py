@@ -8,11 +8,15 @@ class Process(BaseModel):
     name: str
     cpu_usage: float
     memory_usage: float
-    status: str
 
 
 class ProcessList(BaseModel):
     processes: list[Process]
+
+    @computed_field
+    @property
+    def columns(self) -> list[str]:
+        return list(Process.model_fields.keys())
 
     @computed_field
     @property

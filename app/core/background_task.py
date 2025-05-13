@@ -30,7 +30,6 @@ async def background_worker(state: SharedState):
                         name=proc.name(),
                         cpu_usage=proc.cpu_percent(interval=0) / cpu_count,
                         memory_usage=proc.memory_percent(),
-                        status=proc.status()
                     )
                     processes_list.append(process)
                     key = (process.pid, process.name)
