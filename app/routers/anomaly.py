@@ -18,12 +18,10 @@ async def get_memory_anomalies(state: SharedState = Depends(get_shared_state)):
     for proc in state.processes:
         key = (proc.pid, proc.name)
         if key not in state.history:
-            print(f"Key {key} not found in history.")
             continue
 
         cpu_mean, cpu_std = rolling_stats(state.history[(proc.pid, proc.name)]['cpu'])
         if cpu_mean is None or cpu_std is None:
-            print(f"Not enough data to calculate stats for {key}.")
             continue
 
         if is_anomaly(proc.cpu_usage, cpu_mean, cpu_std, threshold=settings.ANOMALY_THRESHOLD):
@@ -40,12 +38,10 @@ async def get_memory_anomalies(state: SharedState = Depends(get_shared_state)):
     for proc in state.processes:
         key = (proc.pid, proc.name)
         if key not in state.history:
-            print(f"Key {key} not found in history.")
             continue
 
         mem_mean, mem_std = rolling_stats(state.history[(proc.pid, proc.name)]['mem'])
         if mem_mean is None or mem_std is None:
-            print(f"Not enough data to calculate stats for {key}. Size: {len(state.history[key]['mem'])}")
             continue
 
         if is_anomaly(proc.memory_usage, mem_mean, mem_std, threshold=settings.ANOMALY_THRESHOLD):
