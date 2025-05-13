@@ -4,7 +4,7 @@ from fastapi import Depends
 from app.models import ProcessList, Process, SharedState
 from app.core.config import settings
 from app.dependencies import get_processes_from_shared_state, get_history_from_shared_state
-from app.utils import rolling_stats, is_anomaly
+from app.procmon.algo import rolling_stats, is_anomaly
 
 router = APIRouter(prefix="/anomaly", tags=["anomaly"])
 

@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.routers import processes, anomaly
 from app.core.config import settings
-from app.utils import lifespan
+from app.core.utils import lifespan
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
