@@ -49,7 +49,7 @@ export default function App() {
                                     onChange={(e) => setFilter(e.target.value)}
                                 />
                             </div>
-                            <ProcessTable endpoint="http://localhost:8000/processes"
+                            <ProcessTable endpoint="http://localhost:8000/api/processes"
                                           refreshRate={refreshRate}
                                           filter={filter}
                                           hasSort
@@ -60,7 +60,7 @@ export default function App() {
                         <div className="flex-1 min-h-0 overflow-hidden">
                             <div className="h-full overflow-y-auto border rounded-lg p-2">
                                 <h2 className="text-lg font-semibold mb-2 ml-2">Detected CPU Usage Anomalies</h2>
-                                <ProcessTable endpoint="http://localhost:8000/anomaly"
+                                <ProcessTable endpoint="http://localhost:8000/api/anomaly"
                                               refreshRate={refreshRate}
                                               anomaly="cpu"
                                 />
@@ -69,7 +69,7 @@ export default function App() {
                         <div className="flex-1 min-h-0 overflow-hidden">
                             <div className="h-full overflow-y-auto border rounded-lg p-2">
                                 <h2 className="text-lg font-semibold mb-2 ml-2">Detected Memory Usage Anomalies</h2>
-                                <ProcessTable endpoint="http://localhost:8000/anomaly"
+                                <ProcessTable endpoint="http://localhost:8000/api/anomaly"
                                               refreshRate={refreshRate}
                                               anomaly="memory"
                                 />
