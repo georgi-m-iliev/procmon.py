@@ -15,6 +15,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str
     PROJECT_DESCRIPTION: str
 
+    PROCESS_REFRESH_INTERVAL: int
     ANOMALY_THRESHOLD: float = 3.0
     ROLLING_WINDOW_SIZE: int = 30
     ROLLING_WINDOW_LIMIT: int = 5

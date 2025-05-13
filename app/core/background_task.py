@@ -20,7 +20,7 @@ async def background_worker(state: SharedState):
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 continue
 
-        await asyncio.sleep(5)
+        await asyncio.sleep(settings.PROCESS_REFRESH_INTERVAL)
 
         for pid, proc in processes.items():
             try:
