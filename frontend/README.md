@@ -1,12 +1,19 @@
-# React + Vite
+# React + Vite + Flowbite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend (Web UI) part of the project, built using React and Flowbite as UI Kit.
+It provides a basic interface for the REST API.
 
-Currently, two official plugins are available:
+## Features
+- Visualizes the full list of running processes
+  - allows the user to order by each column
+  - allows the user to order by ascending or descending order
+- Provides a search bar to filter the processes by name
+- Provides a slider for selecting API query interval
+- Visualizes a list of processes that can be classified as "anomalies", following the
+  env variables that define the criteria for an anomaly. A process may appear in this list
+  and then disappear, due to the fact that the assumption was made with the available set of
+  data. Anomalies are seperated by their usage of CPU and Memory resources.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Notes / Future improvements
+- The endpoints are hardcoded for each table.
+- The state of dark/light mode is not persistent and not regarding the system settings.
