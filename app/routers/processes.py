@@ -19,7 +19,7 @@ async def get_processes(params: Annotated[FilterParams, Query()],
     Get a list of processes with optional filtering and sorting.
     """
     if params.order_by:
-        processes.sort(
+        rocesses.sort(
             key=lambda x: getattr(x, str(params.order_by)),
             reverse=(params.order == "desc"))
     if params.limit:
