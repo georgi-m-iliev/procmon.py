@@ -7,7 +7,7 @@ from app.models import SharedState, Process
 from app.core.config import settings
 
 
-async def background_worker(state: SharedState):
+async def background_worker(state: SharedState, lock: asyncio.Lock):
     cpu_count = psutil.cpu_count(logical=True)
 
     while True:
@@ -43,4 +43,5 @@ async def background_worker(state: SharedState):
 
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 continue
-        state.processes = processes_list
+        async with lock:
+            state.processes = processes_list
