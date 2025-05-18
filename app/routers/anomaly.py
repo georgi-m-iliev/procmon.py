@@ -21,7 +21,7 @@ async def get_memory_anomalies(processes: list[Process] = Depends(get_processes_
         if key not in history:
             continue
 
-        cpu_mean, cpu_std = rolling_stats(history[(proc.pid, proc.name)]['cpu'])
+        cpu_mean, cpu_std = rolling_stats(history[key]['cpu'])
         if cpu_mean is None or cpu_std is None:
             continue
 
@@ -43,7 +43,7 @@ async def get_memory_anomalies(processes: list[Process] = Depends(get_processes_
         if key not in history:
             continue
 
-        mem_mean, mem_std = rolling_stats(history[(proc.pid, proc.name)]['mem'])
+        mem_mean, mem_std = rolling_stats(history[key]['mem'])
         if mem_mean is None or mem_std is None:
             continue
 
