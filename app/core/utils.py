@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     state = SharedState()
     app.state.shared_state_lock = lock
     app.state.shared_state = state
-    asyncio.create_task(background_worker(state, lock))
+    task = asyncio.create_task(background_worker(state, lock))
     yield
     task.cancel()
     try:
